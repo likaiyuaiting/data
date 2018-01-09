@@ -1,0 +1,34 @@
+N1=input('输入谱分析的长度');
+N2=input('输入谱分析的长度');
+N3=input('输入谱分析的长度');
+N4=input('输入谱分析的长度');
+n=0:16;
+x=0.5*sin(pi*2*0.22*n)+sin(pi*2*0.25*n);
+X1=abs(fft(x,N1));     %求余弦序列的N1点FFT?
+subplot(2,2,1)
+k=0:N1-1;
+stem(k,X1)             %绘制序列的幅频特性曲线?
+xlabel('k');
+ylabel('X1(k)');
+string=[num2str(N1),'点FFT幅频曲线']; 
+X2=abs(fft(x,N2));            %求余弦序列的N2点FFT?
+subplot(2,2,2)
+k=0:N2-1;
+stem(k,X2)                    %绘制序列的幅频特性曲线?
+xlabel('k');
+ylabel('X2(k)');
+string=[num2str(N2),'点FFT幅频曲线']; 
+X3=abs(fft(x,N3));              %求余弦序列的N3点FFT?
+subplot(2,2,3)
+k=0:N3-1;
+stem(k,X3)                      %绘制序列的幅频特性曲线?
+xlabel('k');
+ylabel('X3(k)');
+string=[num2str(N3),'点FFT幅频曲线']; 
+X4=abs(fft(x,N4));                 %求余弦序列的N4点FFT?
+subplot(2,2,4)
+k=0:N4-1;
+stem(k,X4)                         %绘制序列的幅频特性曲线?
+xlabel('k');
+ylabel('X4(k)');
+string=[num2str(N4),'点FFT幅频曲线'];
