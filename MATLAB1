@@ -1,0 +1,22 @@
+N=input('输入谱分析的长度');
+n=0:N-1;
+x1=cos(pi*20*n/64);
+x2=cos(pi*22*n/64);
+subplot(2,2,1),stem(n,x1)
+xlabel('n');ylabel('x1(n)');
+title('余弦序列');
+subplot(2,2,2),stem(n,x2)
+xlabel('n');ylabel('x2(n)');
+title('余弦序列');
+X1=abs(fft(x1,N));
+subplot(2,2,3)
+k=0:N-1;
+stem(k,X1)  %绘制序列的幅?
+xlabel('k');ylabel('X1(k)');
+string=[num2str(N),'点FFT幅频曲线'];
+X2=abs(fft(x2,N));    %求x2余弦序?
+subplot(2,2,4)
+k=0:N-1;
+stem(k,X2)
+xlabel('k');ylabel('X2(k)'); 
+string=[num2str(N),'点FFT幅频曲线'];
