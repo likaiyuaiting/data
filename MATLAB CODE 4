@@ -1,0 +1,6 @@
+Fs=8000;    %?给出抽样频率
+x=wavread('C:\1.wav');
+[x,fs]=wavread('C:\1.wav' );     %?把语音信号进行加载入?Matlab?仿真软件平台中
+sound(x,fs);         %?对加载的语音信号进行回放
+stem(x);
+title('语音信号的时域波形')
