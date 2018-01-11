@@ -1,0 +1,52 @@
+       N=33;
+       w=0.25*pi;
+        n=0:(N-1);
+        hd=ideal(w,N);    %得到理想低通滤波器
+       
+        B=boxcar(N);
+        string=['Boxcar','N=',num2str(N)];
+        
+        h=hd.*(B)';    %得到FIR数字滤波器?
+     [H,m]=freqz(h,[1],1024,'whole');   %求其频率响应
+     mag=abs(H);     %得到幅值
+     db=20*log10((mag+eps)/max(mag));
+     pha=angle(H);    %得到相位
+     i=i+1;
+     figure(i)
+     subplot(2,2,1);
+     n=0:N-1;
+     stem(n,h,'.');
+     axis([0,N-1,-0.1,0.3]);
+     hold on;
+     n=0:N-1;
+     x=zeros(N);
+     plot(n,x,'-');
+     xlabel('n');
+     ylabel('h(n)');
+     title('实际低通滤波器的h(n)');
+     text((0.3*N),0.27,string);
+     hold off;
+     subplot(2,2,2);
+     plot(m/pi,db);
+     axis([0,1,-100,0]);
+     xlabel('w/pi');
+     ylabel('dB');
+     title('衰减特性(dB)');
+     grid;
+     subplot(2,2,3);
+     plot(m,pha);
+     hold on;
+     n=0:7;
+     x=zeros(8);
+     plot(n,x,'-');
+     title('相频特性');
+     xlabel('频率(rad)');
+     ylabel('相位(rad)');
+     axis([0,3.15,-4,4]);
+     subplot(2,2,4);
+     plot(m,mag);
+     title('频率特性');
+     xlabel('频率W(rad)');
+     ylabel('幅值');
+     axis([0,3.15,0,1.5]);
+     text(0.9,1.2,string);
